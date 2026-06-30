@@ -8,366 +8,299 @@
         /* --- GLOBAL THEME --- */
         :root {
             --bg-main: #0d0d0d;
-            --bg-card: #1a1a1a;
-            --bg-nav: #2b2b2b;
-            --accent-red: #c62828;
-            --accent-red-hover: #e53935;
-            --text-light: #ffffff;
-            --text-muted: #aaaaaa;
-            --border-gray: #3d3d3d;
+            --bg-card: #171717;
+            --bg-nav: #111111;
+            --accent-red: #d32f2f;
+            --accent-red-hover: #f44336;
+            --accent-orange: #f57c00;
+            --accent-orange-hover: #ff9800;
+            --text-light: #f5f5f5;
+            --text-muted: #888888;
+            --border-gray: #333333;
             
             /* Seat Colors */
-            --seat-empty: transparent;
-            --seat-r1: #ffd700; 
-            --seat-r2: #c0c0c0; 
-            --seat-r3: #cd7f32; 
-            --seat-booked: #c62828;
-            --seat-blocked: #333333;
+            --seat-r1: #d32f2f; /* Red seats like the photo */
+            --seat-r2: #ff9800; 
+            --seat-r3: #ffd700; 
+            --seat-booked: #555555;
+            --seat-blocked: #222222;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; }
-        a { color: inherit; text-decoration: none; }
-        button { cursor: pointer; border: none; outline: none; transition: all 0.2s ease-in-out; }
-
-        /* --- NAVBAR --- */
-        .navbar { background-color: var(--bg-nav); height: 60px; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .nav-logo { font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; color: var(--text-light); }
-        .nav-links { display: flex; align-items: center; gap: 25px; }
-        .nav-item { color: var(--text-light); font-size: 1rem; cursor: pointer; }
-        .nav-item:hover { color: var(--accent-red); }
-        .btn-team { background-color: transparent; color: var(--text-light); border: 1px solid var(--text-muted); padding: 6px 14px; border-radius: 4px; font-size: 0.9rem; }
-        .btn-team:hover { background-color: var(--text-light); color: #000; }
-
-        /* --- PAGES CONTAINERS --- */
-        .page { display: none; padding: 40px 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.4s ease-in-out forwards; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- HOME PAGE --- */
-        .hero-banner {
-            width: 100%; height: 350px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=1200') center/cover no-repeat;
-            border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; border-bottom: 4px solid var(--accent-red); margin-bottom: 20px;
-        }
-        .hero-banner h1 { font-size: 3rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
-        .hero-btn { background-color: var(--accent-red); color: white; padding: 12px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; }
-        .hero-btn:hover { background-color: var(--accent-red-hover); transform: scale(1.05); }
+        button { cursor: pointer; border: none; outline: none; transition: all 0.2s; }
         
-        .media-slider-container { display: flex; overflow-x: auto; gap: 15px; padding: 15px 0; margin-bottom: 40px; scrollbar-width: thin; scrollbar-color: var(--accent-red) var(--bg-card); }
-        .media-slider-container img { height: 180px; border-radius: 6px; border: 1px solid var(--border-gray); object-fit: cover; }
-        .section-title { font-size: 2rem; margin-bottom: 25px; border-left: 5px solid var(--accent-red); padding-left: 15px; text-transform: uppercase; }
+        /* --- NAVBAR --- */
+        .navbar { background-color: var(--bg-nav); height: 65px; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; border-bottom: 1px solid var(--border-gray); position: sticky; top: 0; z-index: 1000; }
+        .nav-logo { font-size: 1.5rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-item { color: var(--text-muted); font-size: 0.95rem; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-item:hover, .nav-item.active { color: var(--text-light); }
+        .btn-team { background: transparent; color: var(--text-light); border: 1px solid var(--border-gray); padding: 8px 16px; border-radius: 4px; font-weight: bold; }
+        .btn-team:hover { background: #fff; color: #000; }
+
+        /* --- PAGES --- */
+        .page { display: none; padding: 40px 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.3s ease-in-out forwards; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- UI COMPONENTS --- */
+        .hero-btn { background-color: var(--accent-red); color: white; padding: 12px 24px; font-size: 1rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; }
+        .hero-btn:hover { background-color: var(--accent-red-hover); }
+        .section-title { font-size: 1.8rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; border-left: 4px solid var(--accent-red); padding-left: 15px; }
         
         .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        .card { background-color: var(--bg-card); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-gray); display: flex; flex-direction: column; }
-        .card-img { width: 100%; height: 200px; object-fit: cover; background-color: #222; }
+        .card { background-color: var(--bg-card); border-radius: 6px; overflow: hidden; border: 1px solid var(--border-gray); display: flex; flex-direction: column; }
+        .card-img { width: 100%; height: 220px; object-fit: cover; }
         .card-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .card-info h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .card-info p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.4; margin-bottom: 20px; flex-grow: 1; }
-        .card-btn { background-color: var(--accent-red); color: white; padding: 10px; text-align: center; font-weight: bold; border-radius: 4px; display: block; }
-        .card-btn:hover { background-color: var(--accent-red-hover); }
+        .card-info h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .card-info p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
 
-        /* --- THEATER DYNAMIC LAYOUT --- */
-        .theater-wrapper { display: flex; flex-direction: column; gap: 20px; align-items: center; margin: 30px 0; }
-        .theater-stage { background-color: #222; border: 2px dashed var(--text-muted); padding: 15px; width: 100%; max-width: 500px; text-align: center; font-weight: bold; letter-spacing: 4px; color: var(--text-light); border-radius: 4px; }
+        /* --- CALENDAR VIEW (MATCHING PHOTO 2) --- */
+        .show-header-card { background: var(--bg-card); border: 1px solid var(--border-gray); border-radius: 8px; display: flex; gap: 30px; padding: 30px; margin-bottom: 40px; }
+        .show-header-img { width: 350px; height: 220px; border-radius: 6px; object-fit: cover; }
+        .show-header-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .show-header-info h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .show-header-info p { color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; }
         
-        /* Dynamic Direction Adjustments */
-        .layout-top { flex-direction: column; }
-        .layout-bottom { flex-direction: column-reverse; }
-        .layout-left { flex-direction: row; }
-        .layout-right { flex-direction: row-reverse; }
-        .layout-left .theater-stage, .layout-right .theater-stage { width: 80px; height: 300px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-lr; }
+        .calendar-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .calendar-month { background: #111; border: 1px solid var(--border-gray); border-radius: 6px; overflow: hidden; }
+        .calendar-title { text-align: center; font-weight: bold; font-size: 1.2rem; padding: 15px; background: #0a0a0a; border-bottom: 1px solid var(--border-gray); text-transform: uppercase; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+        .calendar-day-header { text-align: center; font-size: 0.8rem; font-weight: bold; color: var(--text-muted); padding: 10px 0; border-bottom: 1px solid var(--border-gray); border-right: 1px solid var(--border-gray); }
+        .calendar-day { min-height: 100px; padding: 8px; border-bottom: 1px solid var(--border-gray); border-right: 1px solid var(--border-gray); display: flex; flex-direction: column; gap: 5px; }
+        .calendar-day:nth-child(7n) { border-right: none; }
+        .calendar-date-num { font-size: 0.9rem; font-weight: bold; color: var(--text-muted); margin-bottom: 5px; }
+        .show-pill { background: var(--accent-orange); color: #000; font-size: 0.75rem; font-weight: bold; padding: 6px; border-radius: 4px; text-align: center; cursor: pointer; text-transform: uppercase; }
+        .show-pill:hover { background: var(--accent-orange-hover); transform: scale(1.02); }
 
-        .seating-grid { display: grid; gap: 6px; justify-content: center; overflow-x: auto; padding: 10px; background: #050505; border: 1px solid var(--border-gray); border-radius: 6px; }
-        .seat { width: 32px; height: 32px; border-radius: 4px; border: 1px solid var(--border-gray); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: black; transition: transform 0.1s; }
-        .seat:hover { transform: scale(1.1); }
+        /* --- THEATER SEATING (MATCHING PHOTO 1) --- */
+        .theater-box { background: #050505; border: 1px solid var(--border-gray); border-radius: 8px; padding: 30px; display: flex; flex-direction: column; align-items: center; overflow-x: auto; }
+        .stage-area { width: 400px; height: 60px; background: #222; border: 2px dashed #555; display: flex; justify-content: center; align-items: center; font-weight: bold; letter-spacing: 5px; color: #888; margin-bottom: 40px; border-radius: 10px 10px 0 0; }
         
-        .seat.empty { border: 1px dashed #222; background: transparent; cursor: default; color: transparent; }
-        .seat.empty:hover { transform: none; }
+        .seating-grid { display: grid; gap: 4px; padding: 10px; background: #111; border-radius: 8px; }
+        .seat { width: 22px; height: 22px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; transition: 0.2s; border: 1px solid rgba(255,255,255,0.1); }
+        .seat:hover { transform: scale(1.2); z-index: 10; border-color: white; }
+        
+        .seat.empty { background: transparent; border: none; cursor: default; }
+        .seat.empty:hover { transform: none; border: none; }
         .seat.r1 { background-color: var(--seat-r1); }
         .seat.r2 { background-color: var(--seat-r2); }
         .seat.r3 { background-color: var(--seat-r3); }
-        .seat.blocked { background-color: var(--seat-blocked); color: #fff; border-color: #555; cursor: not-allowed; }
-        .seat.booked { background-color: var(--seat-booked) !important; color: white !important; cursor: not-allowed; opacity: 0.7; }
-        .seat.active-edit { border: 2px solid #fff !important; transform: scale(1.1); }
+        .seat.blocked { background-color: var(--seat-blocked) !important; cursor: not-allowed; opacity: 0.5; }
+        .seat.booked { background-color: var(--seat-booked) !important; cursor: not-allowed; }
 
-        .legend { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; font-size: 0.9rem; flex-wrap: wrap; }
-        .legend-item { display: flex; align-items: center; gap: 8px; }
-        .legend-color { width: 18px; height: 18px; border-radius: 4px; }
-
-        /* --- MODALS & WORKFLOWS --- */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 2000; }
-        .modal-box { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid var(--accent-red); width: 450px; max-width: 95%; }
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-muted); }
-        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 10px; background-color: #111; border: 1px solid var(--border-gray); color: white; border-radius: 4px; }
-        
-        .modal-tabs { display: flex; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border-gray); padding-bottom: 10px; }
-        .modal-tab-btn { background: none; color: var(--text-muted); font-weight: bold; padding: 5px 10px; font-size: 0.9rem; }
-        .modal-tab-btn.active { color: var(--accent-red); border-bottom: 2px solid var(--accent-red); }
-
-        /* --- DASHBOARD ARCHITECTURE --- */
-        .login-card { background-color: var(--bg-card); border: 1px solid var(--border-gray); border-radius: 8px; padding: 40px; max-width: 450px; margin: 80px auto; }
-        .dashboard-container { display: grid; grid-template-columns: 260px 1fr; gap: 30px; min-height: 75vh; }
-        .dash-sidebar { background-color: var(--bg-card); border: 1px solid var(--border-gray); border-radius: 8px; padding: 20px 10px; }
+        /* --- DASHBOARD --- */
+        .dash-container { display: grid; grid-template-columns: 260px 1fr; gap: 30px; min-height: 70vh; }
+        .dash-sidebar { background: var(--bg-card); border: 1px solid var(--border-gray); padding: 20px 15px; border-radius: 6px; }
         .dash-menu-item { display: block; width: 100%; text-align: left; padding: 12px 15px; background: none; color: var(--text-light); font-size: 1rem; border-radius: 4px; margin-bottom: 5px; cursor: pointer; }
         .dash-menu-item.active, .dash-menu-item:hover { background-color: var(--accent-red); }
-        .dash-content { background-color: var(--bg-card); border: 1px solid var(--border-gray); border-radius: 8px; padding: 30px; }
+        .dash-content { background: var(--bg-card); border: 1px solid var(--border-gray); padding: 30px; border-radius: 6px; }
         .dash-pane { display: none; }
         .dash-pane.active { display: block; }
-        .dash-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .dash-table th, .dash-table td { border: 1px solid var(--border-gray); padding: 12px; text-align: left; }
-        .dash-table th { background-color: #111; }
+        
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 0.9rem; }
+        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px; background: #0a0a0a; border: 1px solid var(--border-gray); color: white; border-radius: 4px; }
+        
+        /* Seating Builder Toolbar */
+        .builder-toolbar { display: flex; gap: 10px; margin-bottom: 20px; background: #111; padding: 15px; border-radius: 6px; border: 1px solid var(--border-gray); align-items: center; flex-wrap: wrap; }
+        .tool-btn { padding: 8px 15px; background: #222; border: 1px solid #444; color: white; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
+        .tool-btn.active { background: var(--accent-orange); color: black; font-weight: bold; border-color: var(--accent-orange); }
 
-        /* Seating Builder Workspace Layout */
-        .builder-workspace { display: grid; grid-template-columns: 1fr 300px; gap: 20px; margin-top: 20px; }
-        .builder-control-panel { background: #111; border: 1px solid var(--border-gray); padding: 20px; border-radius: 6px; }
+        /* Modals */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-box { background: var(--bg-card); padding: 30px; border-radius: 8px; border: 1px solid var(--accent-red); width: 400px; }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-logo">Virtual Entertainment</div>
         <div class="nav-links">
             <span class="nav-item" onclick="switchPage('home')">Home</span>
-            <span class="nav-item" onclick="switchPage('tickets')">Shows & Tickets</span>
-            <span class="nav-item" onclick="switchPage('albums')">Albums</span>
-            <button class="btn-team" onclick="switchPage('login')">Team</button>
+            <span class="nav-item" onclick="switchPage('tickets')">Tickets & Shows</span>
+            <button class="btn-team" onclick="switchPage('login')">Team Login</button>
         </div>
     </nav>
 
+    <!-- PAGE: HOME -->
     <div id="page-home" class="page active">
-        <div class="hero-banner">
-            <h1>Experience the most beautiful shows</h1>
-            <button class="hero-btn" onclick="switchPage('tickets')">Explore Shows & Musicals</button>
+        <div class="show-header-card" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=1200') center/cover; justify-content:center; text-align:center; height: 300px;">
+            <div class="show-header-info">
+                <h1 style="font-size:3.5rem; text-transform:uppercase;">The Stage is Yours</h1>
+                <p style="font-size:1.2rem; color:#ddd;">Experience breathtaking virtual theater productions.</p>
+                <div><button class="hero-btn" onclick="switchPage('tickets')">View All Productions</button></div>
+            </div>
         </div>
-        <div class="media-slider-container" id="home-slider"></div>
         <h2 class="section-title">Current Productions</h2>
         <div class="grid-container" id="home-musicals-grid"></div>
     </div>
 
-    <div id="page-albums" class="page">
-        <h2 class="section-title">Photo & Video Albums</h2>
-        <div class="grid-container" id="albums-grid"></div>
-    </div>
-
-    <div id="page-album-view" class="page">
-        <button class="btn-team" style="margin-bottom:20px;" onclick="switchPage('albums')">< Back to Albums</button>
-        <h2 class="section-title" id="album-view-title">Album Title</h2>
-        <p id="album-view-desc" style="color:var(--text-muted); margin-bottom: 20px;"></p>
-        <div class="grid-container" id="album-view-media"></div>
-    </div>
-
+    <!-- PAGE: TICKET SELECTION HUB -->
     <div id="page-tickets" class="page">
         <h2 class="section-title">Select a Production</h2>
         <div class="grid-container" id="ticket-musicals-grid"></div>
     </div>
 
-    <div id="page-shows-list" class="page">
-        <button class="btn-team" style="margin-bottom:20px;" onclick="switchPage('tickets')">< Back to Shows</button>
-        <h2 class="section-title" id="sl-title">Select a Date</h2>
-        <table class="dash-table">
-            <thead><tr><th>Date</th><th>Time</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody id="sl-tbody"></tbody>
-        </table>
-    </div>
-
-    <div id="page-checkout" class="page">
-        <button class="btn-team" style="margin-bottom:20px;" onclick="switchPage('shows-list')">< Back to Dates</button>
-        <h2 class="section-title">Reserve Your Seats</h2>
+    <!-- PAGE: MUSICAL CALENDAR (Matches Photo 2) -->
+    <div id="page-calendar" class="page">
+        <button class="btn-team" style="margin-bottom:20px;" onclick="switchPage('tickets')">&lt; Back to All Shows</button>
         
-        <div class="legend">
-            <div class="legend-item"><div class="legend-color" style="background:var(--seat-r1);"></div> Rank 1 (Robux)</div>
-            <div class="legend-item"><div class="legend-color" style="background:var(--seat-r2);"></div> Rank 2</div>
-            <div class="legend-item"><div class="legend-color" style="background:var(--seat-r3);"></div> Rank 3 (Free)</div>
-            <div class="legend-item"><div class="legend-color" style="background:var(--seat-blocked);"></div> Unavailable</div>
-            <div class="legend-item"><div class="legend-color" style="background:var(--seat-booked);"></div> Booked</div>
+        <div class="show-header-card">
+            <img id="cal-header-img" src="" class="show-header-img">
+            <div class="show-header-info">
+                <h1 id="cal-header-title">Musical Title</h1>
+                <p id="cal-header-desc">Description goes here...</p>
+                <div><button class="hero-btn" onclick="document.getElementById('calendar-section').scrollIntoView({behavior:'smooth'})">BOOK TICKETS BELOW</button></div>
+            </div>
         </div>
 
-        <div id="customer-theater-wrapper" class="theater-wrapper">
-            <div class="theater-stage">STAGE</div>
+        <div style="border-left: 4px solid var(--accent-red); margin-bottom: 20px; padding-left:15px;" id="calendar-section">
+            <h2 style="text-transform:uppercase; font-size: 1.8rem;">Performance Schedule</h2>
+        </div>
+        <p style="color:var(--text-muted); margin-bottom: 25px;">Click on an active orange showtime pill inside the calendar cards to initiate your seat reservation.</p>
+
+        <!-- Dynamic Calendars injected here -->
+        <div class="calendar-wrapper" id="calendar-inject-zone"></div>
+    </div>
+
+    <!-- PAGE: SEATING CHART (CUSTOMER) -->
+    <div id="page-checkout" class="page">
+        <button class="btn-team" style="margin-bottom:20px;" onclick="switchPage('calendar')">&lt; Back to Schedule</button>
+        <h2 class="section-title">Select Your Seats</h2>
+        
+        <div style="display:flex; justify-content:center; gap:20px; margin-bottom:30px;">
+            <span style="display:flex; align-items:center; gap:8px;"><div style="width:15px;height:15px;background:var(--seat-r1);border-radius:3px;"></div> Rank 1</span>
+            <span style="display:flex; align-items:center; gap:8px;"><div style="width:15px;height:15px;background:var(--seat-r2);border-radius:3px;"></div> Rank 2</span>
+            <span style="display:flex; align-items:center; gap:8px;"><div style="width:15px;height:15px;background:var(--seat-r3);border-radius:3px;"></div> Rank 3</span>
+            <span style="display:flex; align-items:center; gap:8px;"><div style="width:15px;height:15px;background:var(--seat-blocked);border-radius:3px;"></div> Unavailable</span>
+        </div>
+
+        <div class="theater-box">
+            <div class="stage-area">STAGE</div>
             <div id="customer-seat-grid" class="seating-grid"></div>
         </div>
     </div>
 
+    <!-- MODAL: BOOKING -->
     <div class="modal-overlay" id="booking-modal">
         <div class="modal-box">
-            <div class="modal-tabs">
-                <button id="tab-btn-photo" class="modal-tab-btn active" onclick="switchModalTab('photo')">1. Watch Photos</button>
-                <button id="tab-btn-form" class="modal-tab-btn" onclick="switchModalTab('form')">2. Confirmation</button>
+            <h2 style="margin-bottom: 10px;">Reserve Seat <span id="mod-seat-txt" style="color:var(--accent-red);"></span></h2>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Please enter your credentials to claim this seat in the database.</p>
+            
+            <div class="input-group">
+                <label>Roblox Username</label>
+                <input type="text" id="mod-roblox" placeholder="Username">
             </div>
-
-            <div id="modal-pane-photo">
-                <p style="color:var(--text-muted); margin-bottom:15px;">Check the scenery view from Seat <span id="mod-seat-id-txt" style="color:white; font-weight:bold;"></span>:</p>
-                <div id="modal-seat-image-container" style="width:100%; height:200px; background:#111; border-radius:4px; overflow:hidden; margin-bottom:20px; display:flex; align-items:center; justify-content:center;">
-                    <img id="mod-seat-img" src="" style="width:100%; height:100%; object-fit:cover; display:none;">
-                    <span id="mod-seat-no-img" style="color:var(--text-muted); font-size:0.9rem;">No photo available for this seat.</span>
-                </div>
-                <button class="hero-btn" style="width:100%;" onclick="switchModalTab('form')">Proceed to Confirmation</button>
+            <div class="input-group">
+                <label>Discord Username</label>
+                <input type="text" id="mod-discord" placeholder="Username">
             </div>
-
-            <div id="modal-pane-form" style="display:none;">
-                <h3 style="margin-bottom:15px;">Secure Seat <span id="mod-seat-id-form"></span></h3>
-                <div class="input-group">
-                    <label>Roblox Username</label>
-                    <input type="text" id="mod-roblox" placeholder="Enter username">
-                </div>
-                <div class="input-group">
-                    <label>Discord Username</label>
-                    <input type="text" id="mod-discord" placeholder="username">
-                </div>
-                <div style="display:flex; gap:10px; margin-top:20px;">
-                    <button class="hero-btn" style="flex:1;" onclick="confirmBooking()">Complete Reservation</button>
-                    <button class="btn-team" onclick="closeModal()">Cancel</button>
-                </div>
+            
+            <div style="display:flex; gap:10px; margin-top:25px;">
+                <button class="hero-btn" style="flex:1;" onclick="confirmBooking()">Confirm</button>
+                <button class="btn-team" onclick="closeModal()">Cancel</button>
             </div>
         </div>
     </div>
 
+    <!-- PAGE: LOGIN -->
     <div id="page-login" class="page">
-        <div class="login-card">
-            <h2 style="text-align:center; margin-bottom:20px;">Team Authentication</h2>
+        <div class="modal-box" style="margin: 100px auto;">
+            <h2 style="text-align:center; margin-bottom:25px;">Staff Terminal</h2>
             <div class="input-group"><label>Username</label><input type="text" id="login-user"></div>
             <div class="input-group"><label>Password</label><input type="password" id="login-pass"></div>
-            <button class="hero-btn" style="width:100%;" onclick="handleLogin()">Login</button>
+            <button class="hero-btn" style="width:100%;" onclick="handleLogin()">Access Dashboard</button>
         </div>
     </div>
 
+    <!-- PAGE: DASHBOARD -->
     <div id="page-dashboard" class="page">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; border-bottom:2px solid var(--border-gray); padding-bottom:15px;">
-            <h1>Infrastructure Control</h1>
-            <button class="hero-btn" style="padding:8px 16px; font-size:0.9rem;" onclick="logout()">Terminate Session</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; padding-bottom:15px; border-bottom:1px solid var(--border-gray);">
+            <h1>Production Control</h1>
+            <button class="hero-btn" style="background:#555;" onclick="switchPage('home')">Logout</button>
         </div>
 
-        <div class="dashboard-container">
+        <div class="dash-container">
             <aside class="dash-sidebar">
-                <p style="font-size:0.75rem; color:var(--accent-red); font-weight:bold; padding:0 15px 5px; text-transform:uppercase;">Admin Controls</p>
-                <button class="dash-menu-item active" onclick="switchPane('pane-musicals')">Productions</button>
-                <button class="dash-menu-item" onclick="switchPane('pane-shows')">Schedule Dates</button>
-                <button class="dash-menu-item" onclick="switchPane('pane-seating-builder')">Seating Chart Builder</button>
-                <button class="dash-menu-item" onclick="switchPane('pane-media')">Homepage Media</button>
-                <button class="dash-menu-item" onclick="switchPane('pane-albums')">Albums Manager</button>
-                <button class="dash-menu-item" onclick="switchPane('pane-team')">Team Registration</button>
-                <hr style="border-color:var(--border-gray); margin:15px 0;">
-                <p style="font-size:0.75rem; color:var(--text-muted); font-weight:bold; padding:0 15px 5px; text-transform:uppercase;">Staff Portal</p>
-                <button class="dash-menu-item" onclick="switchPane('pane-roster')">Rooster</button>
+                <button class="dash-menu-item active" onclick="switchPane('pane-musicals')">1. Manage Musicals</button>
+                <button class="dash-menu-item" onclick="switchPane('pane-shows')">2. Schedule Shows</button>
+                <button class="dash-menu-item" onclick="switchPane('pane-builder')">3. Seating Builder</button>
             </aside>
 
             <main class="dash-content">
+                <!-- PANE: MUSICALS -->
                 <div id="pane-musicals" class="dash-pane active">
-                    <h3>Add Production</h3>
-                    <div class="input-group"><input type="text" id="f-mus-title" placeholder="Musical Title"></div>
-                    <div class="input-group"><textarea id="f-mus-desc" placeholder="Description" rows="3"></textarea></div>
-                    <div class="input-group"><input type="text" id="f-mus-img" placeholder="Cover Image URL"></div>
+                    <h2 style="margin-bottom:20px;">Add New Musical</h2>
+                    <div class="input-group"><label>Title</label><input type="text" id="f-mus-title"></div>
+                    <div class="input-group"><label>Description</label><textarea id="f-mus-desc" rows="3"></textarea></div>
+                    <div class="input-group"><label>Cover Image URL</label><input type="text" id="f-mus-img"></div>
                     <button class="hero-btn" onclick="addMusical()">Save Musical</button>
-                    <table class="dash-table" style="margin-top:20px;"><tbody id="dash-musicals-list"></tbody></table>
-                </div>
-
-                <div id="pane-shows" class="dash-pane">
-                    <h3>Schedule a Show</h3>
-                    <div style="display:flex; flex-direction:column; gap:15px;">
-                        <select id="f-show-musical" class="input-group"></select>
-                        <input type="date" id="f-show-date" class="input-group">
-                        <input type="time" id="f-show-time" class="input-group">
-                        <button class="hero-btn" onclick="addShow()">Create Show Date</button>
-                    </div>
-                </div>
-
-                <div id="pane-seating-builder" class="dash-pane">
-                    <h3>Seating Chart Lab</h3>
-                    <p style="color:var(--text-muted); margin-bottom:15px;">Configure the physical layouts, stages, view photos, and sellable status updates.</p>
                     
+                    <h3 style="margin-top:40px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">Existing Musicals</h3>
+                    <div id="dash-musicals-list" style="display:flex; flex-direction:column; gap:10px;"></div>
+                </div>
+
+                <!-- PANE: SHOWS -->
+                <div id="pane-shows" class="dash-pane">
+                    <h2 style="margin-bottom:20px;">Schedule Show Date</h2>
+                    <p style="color:var(--accent-orange); margin-bottom:20px; font-size:0.9rem;">* Ensure you have added a Musical first!</p>
                     <div class="input-group">
-                        <label>Select Target Production Show</label>
+                        <label>Select Musical</label>
+                        <select id="f-show-musical"></select>
+                    </div>
+                    <div style="display:flex; gap:15px;">
+                        <div class="input-group" style="flex:1;"><label>Date</label><input type="date" id="f-show-date"></div>
+                        <div class="input-group" style="flex:1;"><label>Time</label><input type="time" id="f-show-time"></div>
+                    </div>
+                    <button class="hero-btn" onclick="addShow()">Add Show to Calendar</button>
+
+                    <h3 style="margin-top:40px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">Scheduled Shows</h3>
+                    <div id="dash-shows-list" style="display:flex; flex-direction:column; gap:10px;"></div>
+                </div>
+
+                <!-- PANE: SEATING BUILDER (Advanced Paint System) -->
+                <div id="pane-builder" class="dash-pane">
+                    <h2 style="margin-bottom:10px;">Seating Layout Builder</h2>
+                    <p style="color:var(--text-muted); margin-bottom:20px;">Select a show, pick a tool, and click/drag on the grid to design your theater exactly like your photo.</p>
+
+                    <div class="input-group">
+                        <label>Target Show (Select to load layout)</label>
                         <select id="f-edit-layout-select" onchange="loadSeatingEditor()"></select>
                     </div>
 
-                    <div class="input-group">
-                        <label>Stage Orientation Position</label>
-                        <select id="f-builder-stage-pos" onchange="updateBuilderStagePosition()">
-                            <option value="top">Top (Standard)</option>
-                            <option value="bottom">Bottom</option>
-                            <option value="left">Left Side</option>
-                            <option value="right">Right Side</option>
-                        </select>
+                    <div class="builder-toolbar" id="toolbar">
+                        <span style="color:#aaa; font-weight:bold; margin-right:10px;">Draw Tool:</span>
+                        <button class="tool-btn active" data-tool="r1" onclick="setTool('r1')">Paint Rank 1</button>
+                        <button class="tool-btn" data-tool="r2" onclick="setTool('r2')">Paint Rank 2</button>
+                        <button class="tool-btn" data-tool="r3" onclick="setTool('r3')">Paint Rank 3</button>
+                        <button class="tool-btn" data-tool="empty" onclick="setTool('empty')">Eraser (Empty)</button>
+                        <span style="color:#aaa; font-weight:bold; margin:0 10px;">| Settings Tool:</span>
+                        <button class="tool-btn" data-tool="toggle-sell" onclick="setTool('toggle-sell')">Toggle Sellable (Block)</button>
                     </div>
 
-                    <div class="builder-workspace">
-                        <div style="background:#050505; padding:15px; border:1px solid var(--border-gray); border-radius:6px; display:flex; justify-content:center;">
-                            <div id="builder-theater-wrapper" class="theater-wrapper layout-top">
-                                <div class="theater-stage">STAGE</div>
-                                <div id="builder-seat-grid" class="seating-grid"></div>
-                            </div>
-                        </div>
-
-                        <aside class="builder-control-panel">
-                            <h4 style="border-bottom:1px solid var(--border-gray); padding-bottom:8px; margin-bottom:15px;">Seat Configurator</h4>
-                            <div id="builder-meta-node" style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;">Select a coordinate node inside the grid setup to adjust parameters.</div>
-                            
-                            <div id="builder-controls-form" style="display:none;">
-                                <div class="input-group">
-                                    <label>Node Classification</label>
-                                    <select id="f-node-type" onchange="applyLiveNodeSettings()">
-                                        <option value="empty">Empty Space / Void</option>
-                                        <option value="r1">Rank 1 (Gold)</option>
-                                        <option value="r2">Rank 2 (Silver)</option>
-                                        <option value="r3">Rank 3 (Bronze)</option>
-                                    </select>
-                                </div>
-                                <div class="input-group" style="display:flex; align-items:center; gap:10px;">
-                                    <input type="checkbox" id="f-node-sellable" style="width:20px; height:20px;" onchange="applyLiveNodeSettings()">
-                                    <label for="f-node-sellable">Is Marketable/Sellable</label>
-                                </div>
-                                <div class="input-group">
-                                    <label>Seat Scenery Photo Link</label>
-                                    <input type="text" id="f-node-photo" placeholder="https://cdn.com/img.png" onchange="applyLiveNodeSettings()">
-                                </div>
-                                
-                                <hr style="border-color:var(--border-gray); margin:15px 0;">
-                                
-                                <h4 style="margin-bottom:10px; font-size:0.95rem;">Adjacent Grid Generator</h4>
-                                <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">Duplicate this structural configuration horizontally to the right across multiple elements.</p>
-                                <div style="display:flex; gap:5px;">
-                                    <input type="number" id="f-node-bulk-count" value="1" min="1" max="15" style="width:70px; padding:6px; background:#000; color:#fff; border:1px solid var(--border-gray);">
-                                    <button class="btn-team" style="padding:6px; background:var(--accent-red); color:white;" onclick="executeBulkRowGeneration()">Apply Row</button>
-                                </div>
-                            </div>
-                        </aside>
+                    <div class="theater-box" style="background:#000;">
+                        <div class="stage-area">STAGE</div>
+                        <div id="builder-seat-grid" class="seating-grid"></div>
                     </div>
 
-                    <button class="hero-btn" style="width:100%; margin-top:20px;" onclick="saveSeatingLayout()">Save Global Layout to Database</button>
+                    <button class="hero-btn" style="width:100%; margin-top:20px; background:var(--accent-orange); color:black;" onclick="saveSeatingLayout()">Save Layout to Database</button>
                 </div>
-
-                <div id="pane-media" class="dash-pane">
-                    <h3>Homepage Slider</h3>
-                    <div class="input-group"><input type="text" id="f-media-url" placeholder="Media Content URL"></div>
-                    <button class="hero-btn" onclick="addHomepageMedia()">Push Media Link</button>
-                    <div id="dash-media-list" style="margin-top:20px; display:flex; flex-direction:column; gap:10px;"></div>
-                </div>
-
-                <div id="pane-albums" class="dash-pane">
-                    <h3>Create Collection Album</h3>
-                    <div class="input-group"><input type="text" id="f-album-title" placeholder="Album Title"></div>
-                    <div class="input-group"><input type="text" id="f-album-cover" placeholder="Cover Image URL"></div>
-                    <button class="hero-btn" onclick="addAlbum()">Publish Album Structure</button>
-                    <hr style="border-color:var(--border-gray); margin:20px 0;">
-                    <h3>Add Content Images</h3>
-                    <select id="f-addphoto-album" class="input-group"></select>
-                    <div class="input-group"><input type="text" id="f-photo-url" placeholder="Photo URL"></div>
-                    <button class="hero-btn" onclick="addPhotoToAlbum()">Inject Asset Link</button>
-                </div>
-
-                <div id="pane-team" class="dash-pane"><h3>Register Team</h3><div class="input-group"><input type="text" id="f-team-user" placeholder="Username"></div><div class="input-group"><input type="text" id="f-team-pass" placeholder="Password"></div><button class="hero-btn" onclick="alert('Account Matrix Added locally')">Register Node</button></div>
-                <div id="pane-roster" class="dash-pane"><h3>Roster System</h3><p>Internal tracking functional array active.</p></div>
             </main>
         </div>
     </div>
 
+    <!-- FIREBASE & LOGIC -->
     <script type="module">
-        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521564752671801536/_7YsdBGLp-BTSPR0jmvwtI_aqRQWc3VneBRKHnk377JmRdT7v0WCk9OexkJ5pDFFa9Fn";
+        // ------------------------------------------------------------------
+        // JOUW DISCORD WEBHOOK HIER INVULLEN!
+        // ------------------------------------------------------------------
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521564752671801536/_7YsdBGLp-BTSPR0jmvwtI_aqRQWc3VneBRKHnk377JmRdT7v0WCk9OexkJ5pDFFa9Fn"; 
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getDatabase, ref, set, onValue, update, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        import { getDatabase, ref, set, onValue, update, push, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyB737SMk_GX2_cS1LiWx_0krVS9Io8Tg5I",
@@ -375,46 +308,43 @@
             projectId: "wicked-international-tour",
             storageBucket: "wicked-international-tour.firebasestorage.app",
             messagingSenderId: "650152801645",
-            appId: "1:650152801645:web:b88417bf41879ab6d5d664",
-            measurementId: "G-K6YDWG5QXV"
+            appId: "1:650152801645:web:b88417bf41879ab6d5d664"
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // SYSTEM STORAGE CACHES
-        let appData = { musicals: {}, shows: {}, layouts: {}, media: {}, albums: {} };
+        // State variables
+        let appData = { musicals: {}, shows: {}, layouts: {} };
+        let activeMusicalId = null;
         let activeShowIdForCheckout = null;
-        let selectedSeatForCheckout = null;
-        let builderGridCache = { stagePosition: 'top', seats: {} }; 
-        let currentEditingSeatId = null;
+        let selectedSeatId = null;
         
-        // INTERACTIVE FIREBASE CORRELATION NETWORK
+        // Builder variables
+        let builderGridCache = { seats: {} }; 
+        const GRID_ROWS = 25;
+        const GRID_COLS = 35;
+        let currentTool = 'r1';
+        let isMouseDown = false;
+
+        // Fetch Data
         onValue(ref(db, '/'), (snapshot) => {
             const data = snapshot.val();
             if(data) {
-                appData = data;
-                if(!appData.musicals) appData.musicals = {};
-                if(!appData.shows) appData.shows = {};
-                if(!appData.layouts) appData.layouts = {};
-                if(!appData.media) appData.media = {};
-                if(!appData.albums) appData.albums = {};
+                appData.musicals = data.musicals || {};
+                appData.shows = data.shows || {};
+                appData.layouts = data.layouts || {};
             }
-            renderApp();
-        });
-
-        function renderApp() {
             renderMusicals();
-            renderHomepageMedia();
-            renderAlbums();
+            updateDashboardDropdowns();
             renderDashboardLists();
             
-            if(document.getElementById('page-checkout').classList.contains('active') && activeShowIdForCheckout) {
-                renderCustomerSeatingChart(activeShowIdForCheckout);
+            if(document.getElementById('page-calendar').classList.contains('active') && activeMusicalId) {
+                generateCalendar(activeMusicalId);
             }
-        }
+        });
 
-        // VIEW NAVIGATION PORTS
+        // Navigation
         window.switchPage = function(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(`page-${pageId}`).classList.add('active');
@@ -428,7 +358,8 @@
             event.target.classList.add('active');
         }
 
-        // ELEMENT ARRAY RENDER ENGINE
+        // --- FRONTEND RENDERERS ---
+
         function renderMusicals() {
             const hGrid = document.getElementById('home-musicals-grid');
             const tGrid = document.getElementById('ticket-musicals-grid');
@@ -439,82 +370,95 @@
                     <img src="${m.img}" class="card-img">
                     <div class="card-info">
                         <h3>${m.title}</h3><p>${m.desc}</p>
-                        <button class="card-btn" onclick="openShowSelection('${id}')">Tickets & Times</button>
+                        <button class="hero-btn" onclick="openCalendar('${id}')">Tickets & Schedule</button>
                     </div>
                 </div>`;
             }
             hGrid.innerHTML = html; tGrid.innerHTML = html;
         }
 
-        function renderHomepageMedia() {
-            const slider = document.getElementById('home-slider');
-            const list = document.getElementById('dash-media-list');
-            slider.innerHTML = ''; list.innerHTML = '';
-            for(const [id, url] of Object.entries(appData.media)) {
-                slider.innerHTML += `<img src="${url}">`;
-                list.innerHTML += `<div style="display:flex; justify-content:space-between; background:#222; padding:10px;">
-                    <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%;">${url}</span>
-                    <button style="color:red; background:none;" onclick="set(ref(db, 'media/${id}'), null)">Delete</button>
+        window.openCalendar = function(musicalId) {
+            activeMusicalId = musicalId;
+            const m = appData.musicals[musicalId];
+            document.getElementById('cal-header-img').src = m.img;
+            document.getElementById('cal-header-title').innerText = m.title;
+            document.getElementById('cal-header-desc').innerText = m.desc;
+            
+            generateCalendar(musicalId);
+            switchPage('calendar');
+        }
+
+        // The Calendar Engine (Matches Photo 2)
+        function generateCalendar(musicalId) {
+            const wrap = document.getElementById('calendar-inject-zone');
+            wrap.innerHTML = '';
+            
+            // Generate for July and August 2026 (Context requirements)
+            const monthsToRender = [
+                { year: 2026, month: 6, title: "July 2026" }, // JS months are 0-indexed (6=July)
+                { year: 2026, month: 7, title: "August 2026" } 
+            ];
+
+            // Get shows for this musical
+            const showDates = {};
+            for(const [showId, show] of Object.entries(appData.shows)) {
+                if(show.musicalId === musicalId) {
+                    if(!showDates[show.date]) showDates[show.date] = [];
+                    showDates[show.date].push({ id: showId, time: show.time });
+                }
+            }
+
+            monthsToRender.forEach(mObj => {
+                const daysInMonth = new Date(mObj.year, mObj.month + 1, 0).getDate();
+                const startDay = new Date(mObj.year, mObj.month, 1).getDay();
+                // Adjust start day to make Monday = 0
+                const adjStartDay = startDay === 0 ? 6 : startDay - 1;
+
+                let gridHtml = '';
+                const headers = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                headers.forEach(h => gridHtml += `<div class="calendar-day-header">${h}</div>`);
+
+                // Empty cells before start
+                for(let i = 0; i < adjStartDay; i++) { gridHtml += `<div class="calendar-day"></div>`; }
+
+                // Days
+                for(let day = 1; day <= daysInMonth; day++) {
+                    const dateString = `${mObj.year}-${String(mObj.month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    const dailyShows = showDates[dateString] || [];
+                    
+                    let pills = '';
+                    dailyShows.forEach(s => {
+                        pills += `<div class="show-pill" onclick="initCheckout('${s.id}')">${s.time} - Book</div>`;
+                    });
+
+                    gridHtml += `
+                    <div class="calendar-day">
+                        <div class="calendar-date-num">${day}</div>
+                        ${pills}
+                    </div>`;
+                }
+
+                wrap.innerHTML += `
+                <div class="calendar-month">
+                    <div class="calendar-title">${mObj.title}</div>
+                    <div class="calendar-grid">${gridHtml}</div>
                 </div>`;
-            }
+            });
         }
 
-        function renderAlbums() {
-            const aGrid = document.getElementById('albums-grid');
-            const dashSelect = document.getElementById('f-addphoto-album');
-            aGrid.innerHTML = ''; dashSelect.innerHTML = '';
-            for(const [id, alb] of Object.entries(appData.albums)) {
-                aGrid.innerHTML += `<div class="card"><img src="${alb.cover}" class="card-img"><div class="card-info"><h3>${alb.title}</h3><button class="card-btn" onclick="openAlbumViewer('${id}')">Open Album</button></div></div>`;
-                dashSelect.innerHTML += `<option value="${id}">${alb.title}</option>`;
-            }
-        }
-
-        window.openAlbumViewer = function(albumId) {
-            const alb = appData.albums[albumId];
-            document.getElementById('album-view-title').innerText = alb.title;
-            const mediaGrid = document.getElementById('album-view-media');
-            mediaGrid.innerHTML = '';
-            if(alb.photos) {
-                for(const [pid, url] of Object.entries(alb.photos)) {
-                    mediaGrid.innerHTML += `<img src="${url}" style="width:100%; height:250px; object-fit:cover; border-radius:6px;">`;
-                }
-            }
-            switchPage('album-view');
-        }
-
-        // PRODUCTION RESERVATION GATEWAYS
-        window.openShowSelection = function(musicalId) {
-            const tbody = document.getElementById('sl-tbody');
-            tbody.innerHTML = '';
-            for(const [id, s] of Object.entries(appData.shows)) {
-                if(s.musicalId === musicalId) {
-                    tbody.innerHTML += `<tr><td>${s.date}</td><td>${s.time}</td><td style="color:var(--accent-red); font-weight:bold;">${s.status || 'Active'}</td><td><button class="hero-btn" style="padding:6px 12px; font-size:0.8rem;" onclick="initCheckout('${id}')">View Seating Chart</button></td></tr>`;
-                }
-            }
-            switchPage('shows-list');
-        }
-
+        // Checkout & Customer Seating
         window.initCheckout = function(showId) {
             activeShowIdForCheckout = showId;
-            switchPage('checkout');
-            renderCustomerSeatingChart(showId);
-        }
-
-        function renderCustomerSeatingChart(showId) {
-            const wrapper = document.getElementById('customer-theater-wrapper');
+            const layout = appData.layouts[showId] || { seats: {} };
+            
             const grid = document.getElementById('customer-seat-grid');
-            grid.style.gridTemplateColumns = `repeat(15, 1fr)`;
+            grid.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
             grid.innerHTML = '';
 
-            const layout = appData.layouts[showId] || { stagePosition: 'top', seats: {} };
-            wrapper.className = `theater-wrapper layout-${layout.stagePosition || 'top'}`;
-
-            const seatsData = layout.seats || {};
-
-            for(let r = 0; r < 10; r++) {
-                for(let c = 0; c < 15; c++) {
+            for(let r = 0; r < GRID_ROWS; r++) {
+                for(let c = 0; c < GRID_COLS; c++) {
                     const seatId = `r${r}c${c}`;
-                    const node = seatsData[seatId] || { type: 'empty', status: 'free', sellable: true };
+                    const node = layout.seats[seatId] || { type: 'empty', sellable: true };
                     
                     let cls = `seat ${node.type}`;
                     if(!node.sellable && node.type !== 'empty') cls += ' blocked';
@@ -522,47 +466,18 @@
                     
                     let onclick = '';
                     if(node.type !== 'empty' && node.status !== 'booked' && node.sellable !== false) {
-                        onclick = `onclick="openBookingWorkflow('${seatId}', ${JSON.stringify(node).replace(/"/g, '&quot;')})"`;
+                        onclick = `onclick="openBookingModal('${seatId}')"`;
                     }
-                    grid.innerHTML += `<div class="${cls}" id="${seatId}" ${onclick}>${node.type !== 'empty' ? c+1 : ''}</div>`;
+                    grid.innerHTML += `<div class="${cls}" id="c-${seatId}" ${onclick}></div>`;
                 }
             }
+            switchPage('checkout');
         }
 
-        // CUSTOMER CHECKOUT POPUPS WITH MULTI-STAGE SYSTEM
-        window.openBookingWorkflow = function(seatId, nodeData) {
-            selectedSeatForCheckout = seatId;
-            document.getElementById('mod-seat-id-txt').innerText = seatId.toUpperCase();
-            document.getElementById('mod-seat-id-form').innerText = seatId.toUpperCase();
-            
-            // Image validation routing
-            const imgEl = document.getElementById('mod-seat-img');
-            const noImgEl = document.getElementById('mod-seat-no-img');
-            if(nodeData.viewImg && nodeData.viewImg.trim() !== "") {
-                imgEl.src = nodeData.viewImg;
-                imgEl.style.display = 'block';
-                noImgEl.style.display = 'none';
-            } else {
-                imgEl.style.display = 'none';
-                noImgEl.style.display = 'block';
-            }
-
-            switchModalTab('photo'); // Force initial stage entry
+        window.openBookingModal = function(seatId) {
+            selectedSeatId = seatId;
+            document.getElementById('mod-seat-txt').innerText = seatId.toUpperCase();
             document.getElementById('booking-modal').style.display = 'flex';
-        }
-
-        window.switchModalTab = function(tabName) {
-            if(tabName === 'photo') {
-                document.getElementById('modal-pane-photo').style.display = 'block';
-                document.getElementById('modal-pane-form').style.display = 'none';
-                document.getElementById('tab-btn-photo').classList.add('active');
-                document.getElementById('tab-btn-form').classList.remove('active');
-            } else {
-                document.getElementById('modal-pane-photo').style.display = 'none';
-                document.getElementById('modal-pane-form').style.display = 'block';
-                document.getElementById('tab-btn-photo').classList.remove('active');
-                document.getElementById('tab-btn-form').classList.add('active');
-            }
         }
 
         window.closeModal = function() {
@@ -574,133 +489,34 @@
         window.confirmBooking = function() {
             const rblx = document.getElementById('mod-roblox').value.trim();
             const disc = document.getElementById('mod-discord').value.trim();
-            if(!rblx || !disc) return alert("Credentials must be filled out to claim slot.");
+            if(!rblx || !disc) return alert("Please fill in both usernames.");
             
-            const databaseReferencePath = `layouts/${activeShowIdForCheckout}/seats/${selectedSeatForCheckout}`;
-            update(ref(db, databaseReferencePath), {
+            update(ref(db, `layouts/${activeShowIdForCheckout}/seats/${selectedSeatId}`), {
                 status: 'booked',
                 owner: { roblox: rblx, discord: disc }
             }).then(() => {
                 if(DISCORD_WEBHOOK_URL.includes("http")) {
-                    const currentShow = appData.shows[activeShowIdForCheckout];
+                    const show = appData.shows[activeShowIdForCheckout];
                     fetch(DISCORD_WEBHOOK_URL, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            content: `🎟️ **Ticket Purchased Successfully**\n**Show ID:** ${currentShow.date} @ ${currentShow.time}\n**Seat Assignment:** ${selectedSeatForCheckout.toUpperCase()}\n**Roblox User:** ${rblx}\n**Discord Handle:** ${disc}`
-                        })
+                        body: JSON.stringify({ content: `🎟️ **New Booking!**\nDate: ${show.date} @ ${show.time}\nSeat: ${selectedSeatId.toUpperCase()}\nRoblox: ${rblx}\nDiscord: ${disc}` })
                     });
                 }
-                alert("Seat assignment processed! Proceed to pay inside the Roblox Server.");
+                alert("Seat Reserved! Proceed in Roblox.");
                 closeModal();
             });
         }
 
-        // SEATING LAB WORKSPACE ENGINE (FOUNDER TERMINAL)
-        window.loadSeatingEditor = function() {
-            const showId = document.getElementById('f-edit-layout-select').value;
-            if(!showId) return;
-
-            const targetLayoutStructure = appData.layouts[showId] || { stagePosition: 'top', seats: {} };
-            builderGridCache = JSON.parse(JSON.stringify(targetLayoutStructure));
-            if(!builderGridCache.seats) builderGridCache.seats = {};
-            if(!builderGridCache.stagePosition) builderGridCache.stagePosition = 'top';
-
-            document.getElementById('f-builder-stage-pos').value = builderGridCache.stagePosition;
-            updateBuilderStagePosition();
-            renderBuilderGridMatrix();
-        }
-
-        function updateBuilderStagePosition() {
-            const pos = document.getElementById('f-builder-stage-pos').value;
-            builderGridCache.stagePosition = pos;
-            document.getElementById('builder-theater-wrapper').className = `theater-wrapper layout-${pos}`;
-        }
-
-        function renderBuilderGridMatrix() {
-            const grid = document.getElementById('builder-seat-grid');
-            grid.style.gridTemplateColumns = `repeat(15, 1fr)`;
-            grid.innerHTML = '';
-
-            for(let r = 0; r < 10; r++) {
-                for(let c = 0; c < 15; c++) {
-                    const seatId = `r${r}c${c}`;
-                    if(!builderGridCache.seats[seatId]) {
-                        builderGridCache.seats[seatId] = { type: 'empty', status: 'free', sellable: true, viewImg: '' };
-                    }
-                    const node = builderGridCache.seats[seatId];
-                    let cls = `seat ${node.type}`;
-                    if(!node.sellable && node.type !== 'empty') cls += ' blocked';
-                    if(currentEditingSeatId === seatId) cls += ' active-edit';
-
-                    grid.innerHTML += `<div class="${cls}" id="build-${seatId}" onclick="loadNodeConfiguration('${seatId}')">${node.type !== 'empty' ? c+1 : ''}</div>`;
-                }
-            }
-        }
-
-        window.loadNodeConfiguration = function(seatId) {
-            currentEditingSeatId = seatId;
-            document.querySelectorAll('#builder-seat-grid .seat').forEach(el => el.classList.remove('active-edit'));
-            document.getElementById(`build-${seatId}`).classList.add('active-edit');
-
-            const node = builderGridCache.seats[seatId];
-            document.getElementById('builder-meta-node').innerText = `Editing: Row ${parseInt(seatId.substring(1,2))+1} | Column ${parseInt(seatId.substring(3))+1}`;
-            
-            document.getElementById('f-node-type').value = node.type;
-            document.getElementById('f-node-sellable').checked = node.sellable !== false;
-            document.getElementById('f-node-photo').value = node.viewImg || '';
-
-            document.getElementById('builder-controls-form').style.display = 'block';
-        }
-
-        window.applyLiveNodeSettings = function() {
-            if(!currentEditingSeatId) return;
-            const node = builderGridCache.seats[currentEditingSeatId];
-            node.type = document.getElementById('f-node-type').value;
-            node.sellable = document.getElementById('f-node-sellable').checked;
-            node.viewImg = document.getElementById('f-node-photo').value.trim();
-
-            renderBuilderGridMatrix();
-        }
-
-        window.executeBulkRowGeneration = function() {
-            if(!currentEditingSeatId) return alert("Select an anchor node first.");
-            const totalCount = parseInt(document.getElementById('f-node-bulk-count').value) || 1;
-            
-            const startRow = parseInt(currentEditingSeatId.substring(1, 2));
-            const startCol = parseInt(currentEditingSeatId.substring(3));
-
-            const archetype = builderGridCache.seats[currentEditingSeatId];
-
-            for(let i = 0; i < totalCount; i++) {
-                const targetCol = startCol + i;
-                if(targetCol < 15) {
-                    const targetId = `r${startRow}c${targetCol}`;
-                    builderGridCache.seats[targetId] = {
-                        type: archetype.type,
-                        sellable: archetype.sellable,
-                        viewImg: archetype.viewImg,
-                        status: 'free'
-                    };
-                }
-            }
-            renderBuilderGridMatrix();
-        }
-
-        window.saveSeatingLayout = function() {
-            const showId = document.getElementById('f-edit-layout-select').value;
-            if(!showId) return alert("Select a target show first.");
-            set(ref(db, `layouts/${showId}`), builderGridCache).then(() => {
-                alert("Master Layout Scheme Synced Across Network Node Databases!");
-            });
-        }
-
-        // DATABASE ADAPTER INSERTS
+        // --- DASHBOARD ADMIN ACTIONS ---
+        
         window.addMusical = function() {
             const title = document.getElementById('f-mus-title').value;
             const desc = document.getElementById('f-mus-desc').value;
             const img = document.getElementById('f-mus-img').value;
-            if(title) push(ref(db, 'musicals'), { title, desc, img });
+            if(!title) return alert("Title required");
+            push(ref(db, 'musicals'), { title, desc, img });
+            alert("Musical Added!");
             document.getElementById('f-mus-title').value = '';
         }
 
@@ -708,55 +524,132 @@
             const musicalId = document.getElementById('f-show-musical').value;
             const date = document.getElementById('f-show-date').value;
             const time = document.getElementById('f-show-time').value;
-            if(date) push(ref(db, 'shows'), { musicalId, date, time, status: 'Active' });
-            alert("Date Scheduled.");
+            if(!musicalId || !date) return alert("Musical and Date required");
+            
+            // This is the fix! We specifically link musicalId in the push data.
+            push(ref(db, 'shows'), { musicalId: musicalId, date: date, time: time });
+            alert("Show Scheduled!");
         }
 
-        window.addHomepageMedia = function() {
-            const url = document.getElementById('f-media-url').value;
-            if(url) push(ref(db, 'media'), url);
-            document.getElementById('f-media-url').value = '';
-        }
-
-        window.addAlbum = function() {
-            const title = document.getElementById('f-album-title').value;
-            const cover = document.getElementById('f-album-cover').value;
-            if(title) push(ref(db, 'albums'), { title, cover, photos: {} });
-        }
-
-        window.addPhotoToAlbum = function() {
-            const albumId = document.getElementById('f-addphoto-album').value;
-            const url = document.getElementById('f-photo-url').value;
-            if(albumId && url) push(ref(db, `albums/${albumId}/photos`), url);
-            document.getElementById('f-photo-url').value = '';
+        window.deleteItem = function(path) {
+            if(confirm("Are you sure?")) remove(ref(db, path));
         }
 
         function renderDashboardLists() {
+            const mList = document.getElementById('dash-musicals-list');
+            mList.innerHTML = '';
+            for(const [id, m] of Object.entries(appData.musicals)) {
+                mList.innerHTML += `<div style="background:#222; padding:10px; display:flex; justify-content:space-between;"><span>${m.title}</span> <button style="color:red; background:none;" onclick="deleteItem('musicals/${id}')">Delete</button></div>`;
+            }
+
+            const sList = document.getElementById('dash-shows-list');
+            sList.innerHTML = '';
+            for(const [id, s] of Object.entries(appData.shows)) {
+                const mTitle = appData.musicals[s.musicalId] ? appData.musicals[s.musicalId].title : 'Unknown';
+                sList.innerHTML += `<div style="background:#222; padding:10px; display:flex; justify-content:space-between;"><span>${mTitle} - ${s.date} ${s.time}</span> <button style="color:red; background:none;" onclick="deleteItem('shows/${id}')">Delete</button></div>`;
+            }
+        }
+
+        function updateDashboardDropdowns() {
             const mSelect = document.getElementById('f-show-musical');
             let mHtml = '';
-            for(const [id, m] of Object.entries(appData.musicals)) mHtml += `<option value="${id}">${m.title}</option>`;
+            for(const [id, m] of Object.entries(appData.musicals)) {
+                mHtml += `<option value="${id}">${m.title}</option>`;
+            }
             mSelect.innerHTML = mHtml;
 
             const sSelect = document.getElementById('f-edit-layout-select');
-            let sHtml = '<option value="">-- Select Active Layout --</option>';
+            let currentVal = sSelect.value;
+            let sHtml = '<option value="">-- Select Show to Edit Layout --</option>';
             for(const [id, s] of Object.entries(appData.shows)) {
-                const name = appData.musicals[s.musicalId] ? appData.musicals[s.musicalId].title : 'Unknown';
-                sHtml += `<option value="${id}">${name} (${s.date} ${s.time})</option>`;
+                const mTitle = appData.musicals[s.musicalId] ? appData.musicals[s.musicalId].title : 'Unknown';
+                sHtml += `<option value="${id}" ${currentVal===id?'selected':''}>${mTitle} (${s.date} ${s.time})</option>`;
             }
             sSelect.innerHTML = sHtml;
         }
 
-        // AUTHENTICATION MATRIX
-        window.handleLogin = function() {
-            if(document.getElementById('login-user').value === 'VirtualEntertainment2026' && document.getElementById('login-pass').value === 'VE2026') {
-                switchPage('dashboard');
-            } else alert("Access Denied.");
+        // --- SEATING BUILDER (PAINT SYSTEM) ---
+
+        window.setTool = function(toolName) {
+            currentTool = toolName;
+            document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-tool="${toolName}"]`).classList.add('active');
         }
 
-        window.logout = function() {
-            switchPage('home');
-            document.getElementById('login-user').value = '';
-            document.getElementById('login-pass').value = '';
+        window.loadSeatingEditor = function() {
+            const showId = document.getElementById('f-edit-layout-select').value;
+            if(!showId) return;
+
+            const layout = appData.layouts[showId] || { seats: {} };
+            builderGridCache = JSON.parse(JSON.stringify(layout));
+            if(!builderGridCache.seats) builderGridCache.seats = {};
+
+            renderBuilderGrid();
+        }
+
+        function renderBuilderGrid() {
+            const grid = document.getElementById('builder-seat-grid');
+            grid.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
+            grid.innerHTML = '';
+
+            // Mouse drag logic setup
+            grid.onmousedown = () => isMouseDown = true;
+            grid.onmouseup = () => isMouseDown = false;
+            grid.onmouseleave = () => isMouseDown = false;
+
+            for(let r = 0; r < GRID_ROWS; r++) {
+                for(let c = 0; c < GRID_COLS; c++) {
+                    const seatId = `r${r}c${c}`;
+                    if(!builderGridCache.seats[seatId]) {
+                        builderGridCache.seats[seatId] = { type: 'empty', sellable: true };
+                    }
+                    const node = builderGridCache.seats[seatId];
+                    let cls = `seat ${node.type}`;
+                    if(!node.sellable && node.type !== 'empty') cls += ' blocked';
+
+                    const div = document.createElement('div');
+                    div.className = cls;
+                    div.id = `b-${seatId}`;
+                    
+                    // Click to paint
+                    div.onmousedown = () => applyToolToSeat(seatId);
+                    // Drag to paint
+                    div.onmouseenter = () => { if(isMouseDown) applyToolToSeat(seatId); };
+
+                    grid.appendChild(div);
+                }
+            }
+        }
+
+        function applyToolToSeat(seatId) {
+            const node = builderGridCache.seats[seatId];
+            
+            if(currentTool === 'toggle-sell') {
+                if(node.type !== 'empty') {
+                    node.sellable = !node.sellable;
+                }
+            } else {
+                node.type = currentTool;
+                if(currentTool === 'empty') node.sellable = true; // reset
+            }
+
+            // Quick DOM update for performance during dragging
+            const el = document.getElementById(`b-${seatId}`);
+            el.className = `seat ${node.type} ${(!node.sellable && node.type !== 'empty') ? 'blocked' : ''}`;
+        }
+
+        window.saveSeatingLayout = function() {
+            const showId = document.getElementById('f-edit-layout-select').value;
+            if(!showId) return alert("Select a show first.");
+            set(ref(db, `layouts/${showId}`), builderGridCache).then(() => {
+                alert("Layout successfully saved!");
+            });
+        }
+
+        window.handleLogin = function() {
+            if(document.getElementById('login-user').value === 'admin' && document.getElementById('login-pass').value === '1234') {
+                switchPage('dashboard');
+            } else alert("Invalid");
         }
     </script>
 </body>
