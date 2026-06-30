@@ -1427,8 +1427,7 @@
 
         function postAnnouncement() {
             const text = document.getElementById('f-announcement-text').value.trim();
-            if(!text) return;
-
+            if(!text) retu
             let announcements = JSON.parse(localStorage.getItem('ve_announcements')) || [];
             announcements.unshift({ text }); // Prepend latest information array
             localStorage.setItem('ve_announcements', JSON.stringify(announcements));
@@ -1438,4 +1437,4 @@
         }
     </script>
 </body>
-</html>
+</html
